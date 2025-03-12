@@ -12,7 +12,7 @@ services:
       - "traefik.http.routers.brb-lp.tls.certresolver=myresolver"
     networks:
       - proxy
-
+      
 networks:
   proxy:
     name: proxy
