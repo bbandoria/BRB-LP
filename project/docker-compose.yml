@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  brb-lp:
+    image: brb-lp:latest
+    build: .
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.brb-lp.rule=Host(`brbagenciadigital.com.br`)" # Substitua pelo seu domínio
+      - "traefik.http.routers.brb-lp.entrypoints=websecure"
+      - "traefik.http.routers.brb-lp.tls.certresolver=myresolver"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
